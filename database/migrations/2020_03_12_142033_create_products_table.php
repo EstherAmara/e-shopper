@@ -25,6 +25,8 @@ class CreateProductsTable extends Migration
             $table->string('brand');
             $table->integer('status')->default(0);
             $table->integer('admin_id')->default(0);
+            $table->string('image');
+
             $table->timestamps();
 
             $table->index('user_id');

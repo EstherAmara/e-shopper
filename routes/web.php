@@ -29,4 +29,5 @@ Route::get('/shop', 'ProductsController@index');
 Route::post('/products/store', 'ProductsController@store')->middleware('is_vendor');
 Route::get('/products/accept/{product}', 'ProductsController@accept')->middleware('is_admin');
 Route::get('/products/reject/{product}', 'ProductsController@reject')->middleware('is_admin');
+Route::get('/products-details', 'ProductsController@details');
 

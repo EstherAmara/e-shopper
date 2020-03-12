@@ -159,7 +159,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="images/shop/product12.jpg" alt="" />
+                                            <img src="storage/{{$product->image}}" alt="" />
                                         <h2>{{$product->amount}}</h2>
                                             <p>{{$product->name}}</p>
                                             <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
@@ -182,14 +182,14 @@
                             </div>
                         @endforeach
 
-						<ul class="pagination">
-							<li class="active"><a href="">1</a></li>
-							<li><a href="">2</a></li>
-							<li><a href="">3</a></li>
-							<li><a href="">&raquo;</a></li>
-						</ul>
+
 					</div><!--features_items-->
-				</div>
+                </div>
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        {{$products->links()}}
+                    </div>
+                </div>
 			</div>
 		</div>
 	</section>

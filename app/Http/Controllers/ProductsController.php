@@ -8,10 +8,11 @@ use Illuminate\Http\Request,
 class ProductsController extends Controller
 {
     public function index() {
-        $products = Products::where('status', Products::APPROVED)->latest()->get();
+        $products = Products::where('status', Products::APPROVED)->with('user')->latest()->paginate(12);
 
         return view('shop', compact('products'));
     }
+
     public function store() {
         $data = request()->validate([
             'name' => 'required',
@@ -21,9 +22,15 @@ class ProductsController extends Controller
             'available' => 'required',
             'condition' => 'required',
             'brand' => 'required',
+            'image' => 'required|image'
         ]);
 
-        auth()->user()->products()->create($data);
+        $imagePath = request('image')->store('uploads', 'public');
+        $data['image'] = $imagePath;
+
+        auth()->user()->products()->create(
+            $data
+        );
 
         return redirect()->back();
 
@@ -44,5 +51,9 @@ class ProductsController extends Controller
 
         return redirect()->back();
 
+    }
+
+    public function show() {
+        return view("product-details");
     }
 }

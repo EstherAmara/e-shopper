@@ -7,7 +7,7 @@
 				<div class="col-sm-8 col-sm-offset-2">
 					<div class="login-form"><!--login form-->
 						<h2> Add your Products</h2>
-                        <form method="POST" action="/products/store">
+                        <form method="POST" action="/products/store"  enctype="multipart/form-data">
                             @csrf
                             <input type="text" placeholder="Product Name" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
@@ -63,6 +63,12 @@
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
+                            @enderror
+
+                            <input type="file" name="image" id="image" class="form-control-file">
+
+                            @error('image')
+                                    <strong> {{ $message }} </strong>
                             @enderror
 
 
