@@ -72,7 +72,6 @@
                                 </span>
                             @enderror
 
-                                <br>
 							<input type="password" placeholder="Password" class="@error('password') is-invalid @enderror" name="password" value="{{ old('password') }}" required autocomplete="password" autofocus>
 
                             @error('password')
