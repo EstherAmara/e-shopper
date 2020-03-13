@@ -6,6 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>E-Shopper</title>
+    <link rel="icon" type="image/ico" href="/images/home/logo.png" />
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/font-awesome.min.css" rel="stylesheet">
     <link href="/css/prettyPhoto.css" rel="stylesheet">
@@ -17,11 +18,11 @@
     <script src="/js/html5shiv.js"></script>
     <script src="/js/respond.min.js"></script>
     <![endif]-->
-    <link rel="shortcut icon" href="images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="/images/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/images/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/images/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/images/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/images/ico/apple-touch-icon-57-precomposed.png">
 </head><!--/head-->
 
 <body>
@@ -160,11 +161,19 @@
                                 <li><a href="contact-us">Contact</a></li>
                                 @auth
                                     @if (auth()->user()->isAdmin())
-                                        <li> <a href="/admin"> Admin </a> </li>
+                                        <li class="dropdown"> <a href="#"> Admin <i class="fa fa-angle-down"></i> </a>
+                                            <ul role="menu" class="sub-menu">
+                                                <li><a href="/admin/products">Products</a></li>
+                                            </ul>
+                                        </li>
                                     @endif
 
                                     @if (auth()->user()->isVendor())
-                                        <li> <a href="/vendor"> Vendors </a> </li>
+                                        <li class="dropdown"> <a href="#"> Vendor <i class="fa fa-angle-down"></i> </a>
+                                            <ul role="menu" class="sub-menu">
+                                                <li><a href="/vendor/products">Products</a></li>
+                                            </ul>
+                                        </li>
                                     @endif
                                 @endauth
 
