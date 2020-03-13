@@ -28,12 +28,13 @@ class ProductsController extends Controller
         $imagePath = request('image')->store('uploads', 'public');
         $data['image'] = $imagePath;
 
-        auth()->user()->products()->create(
-            $data
-        );
+        $create = auth()->user()->products()->create($data);
 
-        return redirect()->back();
+        if($create) {
+            return redirect()->back()->with('success', 'Product Successfully Added');
+        }
 
+        return redirect()->back()->with('error', 'Error adding product');
     }
 
     public function accept(Products $product) {

@@ -4,7 +4,14 @@
 	<section id="form"><!--form-->
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-8 col-sm-offset-2">
+                @if (\Session::has('success'))
+                    <div class="alert alert-success">
+                        <ul>
+                            <li>{!! \Session::get('success') !!}</li>
+                        </ul>
+                    </div>
+                @endif
+                                <div class="col-sm-8 col-sm-offset-2">
 					<div class="login-form"><!--login form-->
 						<h2> Add your Products</h2>
                         <form method="POST" action="/products/store"  enctype="multipart/form-data">
